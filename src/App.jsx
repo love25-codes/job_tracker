@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import Navbar from './components/Navbar'
+import Home from './components/Home'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,12 +12,11 @@ function App() {
       <BrowserRouter>
         <Navbar />
 
-        {/* <Routes>
-          <Route path='/' element={<Discover />} />
-          <Route path='/search' element={<Search />} />
-          <Route path='/favourites' element={<Favourites />} />
+        <Routes>
 
-        </Routes> */}
+          <Route path='/' element={<Home />} />
+
+        </Routes>
       </BrowserRouter>
 
     </>
