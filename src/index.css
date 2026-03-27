@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@keyframes slideshow {
+  0% { opacity: 0; }
+  10% { opacity: 25; }
+  33% { opacity: 15; }
+  43% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.animate-slideshow {
+  animation: slideshow 15s infinite;
+}
