@@ -97,7 +97,7 @@ const RecentApplications = () => {
                                 <div className="absolute top-6 right-6 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity ">
                                     <button
                                         onClick={() => bookmarkJob(job)}
-                                        className="p-2 bg-white shadow-md rounded-full transition-all duration-300 hover:scale-110"
+                                        className="p-2 bg-white shadow-md rounded-full transition-all duration-300 hover:scale-110 hover:cursor-pointer"
                                     >
                                         {savedJobs.some(saved => saved.id === job.id) ? (
                                             <BookmarkCheck size={18} className="text-indigo-600 fill-indigo-600" />

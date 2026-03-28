@@ -54,12 +54,20 @@ const deleteJob = (id) => {
   };
 
   // --- ACTIONS 2: BOOKMARKS ---
-  const bookmarkJob = (job) => {
-    // Prevent duplicates
-    if (!savedJobs.some(sj => sj.id === job.id)) {
-      setSavedJobs((prev) => [...prev, job]);
-    }
-  };
+ const bookmarkJob = (job) => {
+    setSavedJobs((prevSaved) => {
+        // Check if the job is already bookmarked
+        const isExisting = prevSaved.find((item) => item.id === job.id);
+
+        if (isExisting) {
+            // REMOVE: If it exists, filter it out
+            return prevSaved.filter((item) => item.id !== job.id);
+        } else {
+            // ADD: If it doesn't exist, add it to the array
+            return [...prevSaved, job];
+        }
+    });
+};
 
   const removeBookmark = (id) => {
     setSavedJobs((prev) => prev.filter(job => job.id !== id));
