@@ -38,7 +38,7 @@ const RecentApplications = () => {
   };
 
   return (
-    <div className="lg:px-10 mb-50 relative">
+    <div className="lg:px-10 mb-5 relative">
       <JobFormModal 
         isOpen={isModalOpen} 
         onClose={() => { setIsModalOpen(false); setEditingJob(null); }} 
@@ -81,7 +81,7 @@ const RecentApplications = () => {
         </motion.div>
       ) : (
         /* Job Cards Grid */
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
           <AnimatePresence mode="popLayout">
             {jobs.map((job) => (
               <motion.div
@@ -91,18 +91,18 @@ const RecentApplications = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 whileHover={{ y: -8 }}
-                className="group relative bg-white border border-slate-100 rounded-[2.5rem] p-6 shadow-sm hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-300"
+                className="group relative bg-indigo-50 border border-indigo-200 rounded-[2rem] p-4 shadow-sm hover:shadow-xl transition-all duration-30"
               >
                 {/* Action Buttons Overlay */}
-                <div className="absolute top-6 right-6 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <button className="p-2 bg-white shadow-md rounded-full text-slate-400 hover:text-indigo-600 hover:scale-110 transition-all">
+                <div className="absolute top-6 right-6 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity ">
+                    <button className="p-2 hover:cursor-pointer bg-white shadow-md rounded-full text-slate-400 hover:text-indigo-600 hover:scale-110 transition-all">
                         <Bookmark size={16} />
                     </button>
-                    <button onClick={() => handleEdit(job)} className="p-2 bg-white shadow-md rounded-full text-slate-400 hover:text-blue-600 hover:scale-110 transition-all">
+                    <button onClick={() => handleEdit(job)} className="p-2 hover:cursor-pointer bg-white shadow-md rounded-full text-slate-400 hover:text-blue-600 hover:scale-110 transition-all">
                         <Edit3 size={16} />
                     </button>
-                    <button onClick={() => deleteJob(job.id)} className="p-2 bg-white shadow-md rounded-full text-slate-400 hover:text-rose-600 hover:scale-110 transition-all">
-                        <Trash2 size={16} />
+                    <button onClick={() => deleteJob(job.id)} className="p-2 hover:cursor-pointer bg-white shadow-md rounded-full text-slate-400 hover:text-rose-600 hover:scale-110 transition-all">
+                       <Trash2 size={16} />
                     </button>
                 </div>
 
@@ -113,10 +113,10 @@ const RecentApplications = () => {
                       <Building2 size={24} />
                     </div>
                     <div>
-                      <h3 className="font-bold text-slate-900 text-lg leading-tight truncate w-32 md:w-40">
+                      <h3 className="font-bold text-slate-900 text-xl leading-tight truncate w-32 md:w-40">
                         {job.companyName}
                       </h3>
-                      <p className="text-indigo-500 text-sm font-semibold">{job.jobTitle}</p>
+                      <p className="text-indigo-700 text-md font-semibold">{job.jobTitle}</p>
                     </div>
                   </div>
                 </div>
@@ -139,24 +139,19 @@ const RecentApplications = () => {
                   </div>
                   <div className="flex items-center gap-2 text-slate-500 text-sm font-medium">
                     <Calendar size={16} className="text-slate-400" />
-                    <span>Applied: {new Date(job.appliedDate).toLocaleDateString()}</span>
+                    <span>Applied: {new Date(job.appliedDate).toLocaleDateString('en-GB')}</span>
                   </div>
                 </div>
 
                 {/* Notes Section */}
                 {job.notes && (
-                  <div className="bg-slate-50 rounded-2xl p-4 flex gap-3 mb-6 border border-slate-100">
-                    <StickyNote size={18} className="text-indigo-400 shrink-0" />
-                    <p className="text-xs text-slate-600 italic leading-relaxed line-clamp-2">
+                  <div className="bg-slate-50 rounded-xl p-3 flex gap-3 border border-slate-100">
+                    <StickyNote size={18} className="text-indigo-700 shrink-0" />
+                    <p className="text-sm text-slate-600 italic">
                       "{job.notes}"
                     </p>
                   </div>
                 )}
-
-                <button className="w-full py-3 bg-slate-50 group-hover:bg-indigo-50 rounded-xl flex items-center justify-center gap-2 text-slate-600 group-hover:text-indigo-600 font-bold text-sm transition-all border border-transparent group-hover:border-indigo-100">
-                  View Details
-                  <ChevronRight size={16} />
-                </button>
               </motion.div>
             ))}
           </AnimatePresence>
