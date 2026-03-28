@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Building2, MapPin, Banknote, StickyNote, Send, Briefcase } from 'lucide-react';
+import { X, Building2, MapPin, Banknote, StickyNote, Send, Briefcase, Calendar } from 'lucide-react';
 
 export const JobFormModal = ({ isOpen, onClose, onSubmit, initialData = null }) => {
   const [formData, setFormData] = useState({
@@ -20,7 +20,7 @@ export const JobFormModal = ({ isOpen, onClose, onSubmit, initialData = null }) 
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm">
         <motion.div 
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -28,7 +28,7 @@ export const JobFormModal = ({ isOpen, onClose, onSubmit, initialData = null }) 
           className="bg-white w-full max-w-lg rounded-[2.5rem] overflow-hidden shadow-2xl border border-slate-100"
         >
           {/* Header - Black & Indigo Theme */}
-          <div className="bg-slate-900 p-8 text-white flex justify-between items-center">
+          <div className="bg-slate-900 p-6 text-white flex justify-between items-center">
             <div>
               <h2 className="text-2xl font-black text-white">{initialData ? 'Edit Application' : 'New Journey'}</h2>
               <p className="text-indigo-400 text-sm font-bold uppercase tracking-wider">Smartly Tracker</p>
@@ -39,13 +39,13 @@ export const JobFormModal = ({ isOpen, onClose, onSubmit, initialData = null }) 
           </div>
 
           {/* Form */}
-          <form className="p-8 space-y-4" onSubmit={(e) => { e.preventDefault(); onSubmit(formData); onClose(); }}>
-            <div className="grid grid-cols-2 gap-4">
+          <form className="p-6" onSubmit={(e) => { e.preventDefault(); onSubmit(formData); onClose(); }}>
+            <div className="grid grid-cols-2 gap-3">
               <div className="col-span-2">
-                <label className="text-xs font-black uppercase text-slate-500 ml-1">Company Name</label>
-                <div className="relative mt-1">
+                <label className="text-xs font-black uppercase text-slate-500">Company Name</label>
+                <div className="relative">
                   <Building2 className="absolute left-4 top-3.5 text-indigo-500" size={18} />
-                  <input required className="w-full pl-12 pr-4 py-3 bg-slate-50 border-none rounded-2xl focus:ring-2 ring-indigo-500 outline-none font-semibold text-slate-900" 
+                  <input required className="w-full pl-12 pr- py-2 bg-slate-50 border-none rounded-2xl focus:ring-2 ring-indigo-500 outline-none font-semibold text-slate-900" 
                     placeholder="e.g. Google" value={formData.companyName} onChange={e => setFormData({...formData, companyName: e.target.value})} />
                 </div>
               </div>
@@ -72,6 +72,12 @@ export const JobFormModal = ({ isOpen, onClose, onSubmit, initialData = null }) 
               </div>
 
               <div>
+                <label className="text-xs font-black uppercase text-slate-500 ml-1">Applied Date</label>
+                <input type="date" required className="w-full px-4 py-3 mt-1 bg-slate-50 border-none rounded-2xl focus:ring-2 ring-indigo-500 outline-none font-bold text-slate-900 cursor-pointer"
+                  value={formData.appliedDate} onChange={e => setFormData({...formData, appliedDate: e.target.value})} />
+              </div>
+
+              <div>
                 <label className="text-xs font-black uppercase text-slate-500 ml-1">Status</label>
                 <select className="w-full px-4 py-3 mt-1 bg-slate-50 border-none rounded-2xl focus:ring-2 ring-indigo-500 outline-none font-bold text-indigo-600 cursor-pointer"
                   value={formData.status} onChange={e => setFormData({...formData, status: e.target.value})}>
@@ -82,8 +88,8 @@ export const JobFormModal = ({ isOpen, onClose, onSubmit, initialData = null }) 
                 </select>
               </div>
 
-              <div>
-                <label className="text-xs font-black uppercase text-slate-500 ml-1">Type</label>
+              <div className="col-span-2">
+                <label className="text-xs font-black uppercase text-slate-500 ml-1">Work Type</label>
                 <select className="w-full px-4 py-3 mt-1 bg-slate-50 border-none rounded-2xl focus:ring-2 ring-indigo-500 outline-none font-bold text-slate-900 cursor-pointer"
                   value={formData.locationType} onChange={e => setFormData({...formData, locationType: e.target.value})}>
                   <option value="remote">Remote</option>
