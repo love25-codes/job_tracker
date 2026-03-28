@@ -30,8 +30,16 @@ export const JobProvider = ({ children }) => {
     setJobs((prevJobs) => [...prevJobs, newJob]);
   };
 
+  const deleteJob = (id) => {
+  setJobs((prev) => prev.filter(job => job.id !== id));
+};
+
+const updateJob = (id, updatedData) => {
+  setJobs((prev) => prev.map(job => job.id === id ? { ...job, ...updatedData } : job));
+};
+
   return (
-    <JobContext.Provider value={{ jobs, addJob }}>
+    <JobContext.Provider value={{ jobs, addJob, deleteJob, updateJob }}>
       {children}
     </JobContext.Provider>
   );
