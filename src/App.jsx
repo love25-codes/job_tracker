@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import Home from './components/Home'
 import Footer from './components/Footer'
 import Dashboard from './components/Dashboard'
+import SecureBookmarks from './components/SecureBookmarks'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -19,6 +20,7 @@ function App() {
 
           <Route path='/' element={<Home />} />
           <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/saved' element={<SecureBookmarks />} />
 
         </Routes>
 
