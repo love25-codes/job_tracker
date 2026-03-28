@@ -66,9 +66,9 @@ export const JobFormModal = ({ isOpen, onClose, onSubmit, initialData = null }) 
               </div>
 
               <div>
-                <label className="text-xs font-black uppercase text-slate-500 ml-1">Salary Range</label>
+                <label className="text-xs font-black uppercase text-slate-500 ml-1">Expected Salary</label>
                 <input className="w-full px-4 py-3 mt-1 bg-slate-50 border-none rounded-2xl focus:ring-2 ring-indigo-500 outline-none font-semibold text-slate-900" 
-                  placeholder="e.g. $120k" value={formData.salaryRange} onChange={e => setFormData({...formData, salaryRange: e.target.value})} />
+                  placeholder="e.g. 1,00,000 (INR Only)" value={formData.salaryRange} onChange={e => setFormData({...formData, salaryRange: e.target.value})} />
               </div>
 
               <div>
