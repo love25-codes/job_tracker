@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 function Navbar() {
+    const [isOpen, setIsOpen] = useState(false);
+
     // Shared logic for active states
     const linkClasses = ({ isActive }) =>
         `relative px-1 py-2 text-base font-bold transition-all duration-300 ease-in-out hover:text-indigo-600 ${
@@ -11,8 +13,8 @@ function Navbar() {
     return (
         <nav className="bg-white border-b border-slate-100 sticky top-0 z-50 shadow-sm">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-start items-center h-20">
-                    
+                <div className="flex items-center h-20">
+
                     {/* Logo Section */}
                     <div className="flex items-center gap-3">
                         <div className="bg-indigo-600 text-white p-2.5 rounded-xl shadow-lg shadow-indigo-100">
@@ -30,7 +32,7 @@ function Navbar() {
                         </div>
                     </div>
 
-                    {/* Navigation Tabs - Aligned Right */}
+                    {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center space-x-10 ml-auto">
                         <NavLink to="/" className={linkClasses}>
                             {({ isActive }) => (
@@ -40,6 +42,7 @@ function Navbar() {
                                 </>
                             )}
                         </NavLink>
+
                         <NavLink to="/dashboard" className={linkClasses}>
                             {({ isActive }) => (
                                 <>
@@ -48,6 +51,7 @@ function Navbar() {
                                 </>
                             )}
                         </NavLink>
+
                         <NavLink to="/applications" className={linkClasses}>
                             {({ isActive }) => (
                                 <>
@@ -56,6 +60,7 @@ function Navbar() {
                                 </>
                             )}
                         </NavLink>
+
                         <NavLink to="/analytics" className={linkClasses}>
                             {({ isActive }) => (
                                 <>
@@ -65,15 +70,58 @@ function Navbar() {
                             )}
                         </NavLink>
 
-                        {/* Booked Button with Light Blue Background Effect */}
-                    <NavLink to="/saved" className="group flex items-center gap-2 px-5 py-3 rounded-full bg-blue-50 text-slate-700 text-sm font-medium hover:bg-blue-200 hover:cursor-pointer transition-all duration-300 shadow-sm shadow-blue-100">
-                        <span>Saved</span>
-                        <span className=" group-hover:scale-110 transition-transform">💙</span>
-                    </NavLink>
+                        {/* Saved Button */}
+                        <NavLink
+                            to="/saved"
+                            className="group flex items-center gap-2 px-5 py-3 rounded-full bg-blue-50 text-slate-700 text-sm font-medium hover:bg-blue-200 transition-all duration-300 shadow-sm shadow-blue-100"
+                        >
+                            <span>Saved</span>
+                            <span className="group-hover:scale-110 transition-transform">💙</span>
+                        </NavLink>
+                    </div>
+
+                    {/* Mobile Hamburger */}
+                    <div className="ml-auto md:hidden">
+                        <button
+                            onClick={() => setIsOpen(!isOpen)}
+                            className="text-2xl text-slate-700 focus:outline-none"
+                        >
+                            {isOpen ? "✖" : "☰"}
+                        </button>
                     </div>
 
                 </div>
             </div>
+
+            {/* Mobile Menu */}
+            {isOpen && (
+                <div className="md:hidden flex flex-col gap-4 px-6 pb-6 bg-white border-t border-slate-100 shadow-md">
+
+                    <NavLink to="/" className={linkClasses} onClick={() => setIsOpen(false)}>
+                        Home
+                    </NavLink>
+
+                    <NavLink to="/dashboard" className={linkClasses} onClick={() => setIsOpen(false)}>
+                        Dashboard
+                    </NavLink>
+
+                    <NavLink to="/applications" className={linkClasses} onClick={() => setIsOpen(false)}>
+                        Applications
+                    </NavLink>
+
+                    <NavLink to="/analytics" className={linkClasses} onClick={() => setIsOpen(false)}>
+                        Analytics
+                    </NavLink>
+
+                    <NavLink
+                        to="/saved"
+                        className="flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-slate-700 text-sm font-medium hover:bg-blue-200 transition"
+                        onClick={() => setIsOpen(false)}
+                    >
+                        Saved 💙
+                    </NavLink>
+                </div>
+            )}
         </nav>
     );
 }
