@@ -44,7 +44,7 @@ const Analytics = () => {
   }
 
   const chartData = [
-    { label: 'Applied', value: stats.counts.applied, color: '#6366f1' },
+    { label: 'Applied', value: stats.counts.applied, color: '#f0d32f' },
     { label: 'Interview', value: stats.counts.interviewing, color: '#3b82f6' },
     { label: 'Offers', value: stats.counts.offer, color: '#10b981' },
     { label: 'Rejected', value: stats.counts.rejected, color: '#ef4444' }
