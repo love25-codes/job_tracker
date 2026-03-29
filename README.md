@@ -34,10 +34,10 @@ TRACK_YOUR_JOBS
 
 ## ✨ Key Features:
 ```
- -> 📈GROWTH ANALYSIS: Professional bar charts visualizing your application funnel (Applied, Interviewing, Offer, Rejected).
+ -> 📈GROWTH ANALYSIS: Professional bar charts visualizing your application funnel.
  -> 🎯EFFICIENCY TRACKING: Simple success-rate metrics to measure your job-seeking ROI.
  -> 📝SMART FORMS: Highly organized, compact modals for adding and editing job details.
- -> 🌑DARK & LIGHT STUDIO UI: A premium aesthetic using Indigo and Slate themes for a professional "SaaS" feel.
+ -> 🌑UI/UX: A premium aesthetic using Indigo and Slate themes for a professional "SaaS" feel.
  -> 📱FULLY RESPONSIVE: Clean experience across desktop, tablet, and mobile.
 ```
 
